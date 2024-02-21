@@ -113,8 +113,37 @@ export class PokedexComponent {
 
   paginaAtual = 0;
   total = 120
+  filteredPokemons: any[] = [];
+  totalPokemons = 1302;
+  currentPage = 0;
+  totalPages = 20;
+  searchValue = "";
+
+  constructor() {
+
+  }
 
   mudarPagina(event: any) {
     this.paginaAtual = event.page;
+  }
+
+  primeiraPagina() {
+    this.currentPage = 1;
+  }
+
+  paginaAnterior() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  proximaPagina() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  ultimaPagina() {
+    this.currentPage = this.totalPages;
   }
 }

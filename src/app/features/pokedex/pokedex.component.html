@@ -24,7 +24,21 @@
         <div class="linha"></div>
       </div>
 
-      <p-paginator [rowsPerPageOptions]="[5]" [first]="1"  [rows]="10" (onPageChange)=" mudarPagina($event)" [first]="paginaAtual" [rows]="total" [totalRecords]="120"  [showFirstLastIcon]="false"></p-paginator>
+      <div class="paginator">
+        <p class="paginator-text-info">1 de  4 páginas</p>
+        <span class="material-symbols-outlined">
+          first_page
+        </span>
+        <span class="material-symbols-outlined">
+            navigate_before
+        </span>
+        <span class="material-symbols-outlined">
+            navigate_next
+        </span>
+        <span class="material-symbols-outlined">
+              last_page
+        </span>
+      </div>
     </div>
   </section>
 
