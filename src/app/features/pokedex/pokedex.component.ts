@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pokedex',
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.scss']
 })
-export class PokedexComponent {
+export class PokedexComponent implements OnInit {
 
   pokemons: any[] = [
     {
@@ -111,39 +111,46 @@ export class PokedexComponent {
     // ... outros Pokémon
   ];
 
-  paginaAtual = 0;
-  total = 120
-  filteredPokemons: any[] = [];
-  totalPokemons = 1302;
-  currentPage = 0;
-  totalPages = 20;
-  searchValue = "";
+  paginaAtual: number = 0; // Página atual
+  itensPorPagina: number = 2; // Quantidade de Pokémons por página
 
   constructor() {
 
   }
 
-  mudarPagina(event: any) {
-    this.paginaAtual = event.page;
+  ngOnInit(): void {
+
   }
 
-  primeiraPagina() {
-    this.currentPage = 1;
-  }
-
-  paginaAnterior() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
+    // Método para avançar para a próxima página
+    proximaPagina() {
+      const ultimaPagina = Math.ceil(this.pokemons.length / this.itensPorPagina);
+      if (this.paginaAtual < ultimaPagina - 1) {
+        this.paginaAtual++;
+      }
     }
-  }
 
-  proximaPagina() {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
+    // Método para voltar para a página anterior
+    paginaAnterior() {
+      if (this.paginaAtual > 0) {
+        this.paginaAtual--;
+      }
     }
+
+    // Método para ir para a primeira página
+    primeiraPagina() {
+      this.paginaAtual = 0;
+    }
+
+    // Método para ir para a última página
+    ultimaPagina() {
+      this.paginaAtual = Math.ceil(this.pokemons.length / this.itensPorPagina) - 1;
+    }
+
+      // Método para calcular a última página
+  calcularUltimaPagina(): number {
+    return Math.ceil(this.pokemons.length / this.itensPorPagina);
   }
 
-  ultimaPagina() {
-    this.currentPage = this.totalPages;
-  }
+
 }

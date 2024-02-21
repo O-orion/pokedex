@@ -17,7 +17,7 @@
     </div>
 
     <div class="body-lista-pokemons">
-      <div class="item-lista-pokemon" *ngFor="let pokemon of pokemons | slice: paginaAtual : paginaAtual + 5">
+      <div class="item-lista-pokemon" *ngFor="let pokemon of pokemons | slice: paginaAtual * itensPorPagina : (paginaAtual * itensPorPagina) + itensPorPagina">
         <img class="pokemon-imagem" src="{{pokemon.imagem}}" alt="">
         <p class="pokemon-nome">{{ pokemon.nome }}</p>
         <p class="pokemon-descricao">{{ pokemon.descricao }}</p>
@@ -25,17 +25,17 @@
       </div>
 
       <div class="paginator">
-        <p class="paginator-text-info">1 de  4 páginas</p>
-        <span class="material-symbols-outlined">
+        <p class="paginator-text-info">{{ paginaAtual + 1 }} de {{ calcularUltimaPagina() }} páginas</p>
+        <span class="material-symbols-outlined" (click)="primeiraPagina()">
           first_page
         </span>
-        <span class="material-symbols-outlined">
+        <span class="material-symbols-outlined" (click)="paginaAnterior()">
             navigate_before
         </span>
-        <span class="material-symbols-outlined">
+        <span class="material-symbols-outlined" (click)="proximaPagina()">
             navigate_next
         </span>
-        <span class="material-symbols-outlined">
+        <span class="material-symbols-outlined" (click)="ultimaPagina()">
               last_page
         </span>
       </div>

@@ -5,6 +5,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BrowserModule } from '@angular/platform-browser';
     BrowserModule,
     CommonModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports: [
     NavBarComponent
