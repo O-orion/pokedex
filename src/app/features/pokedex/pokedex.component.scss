@@ -1,0 +1,101 @@
+.container-pokedex {
+  padding-top: 1rem;
+
+  .titulo-pokedex {
+    color: #000000DE;
+
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 44px;
+    text-align: center;
+
+  }
+
+  .subTitulo-pokedex {
+    color: #000000DE;
+    height: 24px;
+
+    font-weight: 400;
+    line-height: 24px;
+
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .pesquisar-pokedex {
+    padding-top: 1rem;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    .campo-pesquisa {
+      width: 70%;
+      overflow: hidden;
+    }
+  }
+
+  .lista-pokemon {
+    width: 100%;
+    padding: 1rem;
+
+    .linha {
+      width: 100%;
+     border: 1px solid #BDBDBD;
+    }
+
+    .texto-informacao-lista {
+      padding: 1rem 0 1rem 0;
+      font-family: "Nunito", sans-serif;
+      color: #00000099;
+      line-height: 24px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .body-lista-pokemons {
+      width: 100%;
+
+      .item-lista-pokemon {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .pokemon-imagem {
+          text-align: center;
+          width: 214px;
+          height: 210px;
+          border-radius: 4px;
+          border: 1px solid #565656;
+
+        }
+
+        .pokemon-nome {
+          margin: 1rem 0 1rem 0;
+          text-align: center;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 24px;
+          color: #000000DE;
+
+        }
+
+        .pokemon-descricao {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 24px;
+          text-align: center;
+
+          color: #565656;
+          margin-bottom: 1rem;
+
+        }
+      }
+
+    }
+  }
+}

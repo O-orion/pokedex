@@ -1,0 +1,31 @@
+<section class="container-pokedex">
+  <h1 class="titulo-pokedex">Fase teste prático Front_end</h1>
+  <h2 class="subTitulo-pokedex">Subtitulo da descrição</h2>
+
+  <div class="pesquisar-pokedex">
+      <span class=" campo-pesquisa p-input-icon-right">
+        <input type="text" pInputText  />
+        <i class="pi pi-search"></i>
+    </span>
+  </div>
+
+  <section class="lista-pokemon">
+    <div class="header-lista-pokemon">
+      <div class="linha"></div>
+      <p class="texto-informacao-lista">Exibindo 5 de 20 itens</p>
+      <div class="linha"></div>
+    </div>
+
+    <div class="body-lista-pokemons">
+      <div class="item-lista-pokemon" *ngFor="let pokemon of pokemons | slice: paginaAtual : paginaAtual + 5">
+        <img class="pokemon-imagem" src="{{pokemon.imagem}}" alt="">
+        <p class="pokemon-nome">{{ pokemon.nome }}</p>
+        <p class="pokemon-descricao">{{ pokemon.descricao }}</p>
+        <div class="linha"></div>
+      </div>
+
+      <p-paginator [rowsPerPageOptions]="[5]" [first]="1"  [rows]="10" (onPageChange)=" mudarPagina($event)" [first]="paginaAtual" [rows]="total" [totalRecords]="120"  [showFirstLastIcon]="false"></p-paginator>
+    </div>
+  </section>
+
+</section>

@@ -1,0 +1,23 @@
+
+
+@media (max-width: 800px) {
+  .menu-pokedex {
+    width: 100%;
+    height: 80px;
+    background: #020202;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .menu-opcoes {
+
+      color: #fff;
+      display: flex;
+    }
+    .menu-logo {
+      width: 159px;
+      height: 35px;
+    }
+  }
+}
