@@ -31,8 +31,40 @@
     justify-content: center;
 
     .campo-pesquisa {
-      width: 70%;
       overflow: hidden;
+      position: relative;
+
+      display: flex;
+      justify-content: center;
+
+      .input-pesquisa {
+        width: 257px;
+        height: 40px;
+        border: 1px solid #BDBDBD;
+        border-radius: 5px;
+        padding: 5px;
+        padding-right:30px ;
+      }
+
+      .input-pesquisa::placeholder {
+        font-family: "Nunito", sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        color: #00000099;
+
+      }
+
+      .icone-pesquisa {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 32%;
+
+        right: 1%;
+        color: #565656;
+
+      }
     }
   }
 

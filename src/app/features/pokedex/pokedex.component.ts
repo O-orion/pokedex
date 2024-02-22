@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Pokemon } from 'src/app/core/models/pokemon';
+import { PokemonsService } from 'src/app/shared/services/pokemons.service';
 
 @Component({
   selector: 'app-pokedex',
@@ -7,119 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokedexComponent implements OnInit {
 
-  pokemons: any[] = [
-    {
-      nome: "Bulbasaur",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon planta com uma semente em suas costas.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "https://url-da-imagem-do-charmander.png",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Bulbasaur",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon planta com uma semente em suas costas.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "https://url-da-imagem-do-charmander.png",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Bulbasaur",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon planta com uma semente em suas costas.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "https://url-da-imagem-do-charmander.png",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Bulbasaur",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon planta com uma semente em suas costas.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda. Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "assets/img/logo.svg",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    {
-      nome: "Charmander",
-      imagem: "https://url-da-imagem-do-charmander.png",
-      descricao: "Um Pokémon lagarto com uma chama em sua cauda.",
-    },
-    // ... outros Pokémon
-  ];
-
+  pokemons: Pokemon[] = [];
+  countPokemons: number = 0
   paginaAtual: number = 0; // Página atual
-  itensPorPagina: number = 2; // Quantidade de Pokémons por página
+  itensPorPagina: number = 20; // Quantidade de Pokémons por página
+  nextPageUrl: string = ''
 
-  constructor() {
+  constructor(private servicePokemon: PokemonsService) {
 
   }
 
   ngOnInit(): void {
+    this.servicePokemon.carregarListaPokemons().subscribe({
+      next: (listaPokemon) => {
+        console.log(listaPokemon)
+        this.nextPageUrl = listaPokemon.next
+        this.pokemons = listaPokemon.results;
+        this.countPokemons = listaPokemon.count
 
+      }
+    })
   }
 
     // Método para avançar para a próxima página
@@ -149,7 +58,7 @@ export class PokedexComponent implements OnInit {
 
       // Método para calcular a última página
   calcularUltimaPagina(): number {
-    return Math.ceil(this.pokemons.length / this.itensPorPagina);
+    return Math.ceil(this.countPokemons / this.itensPorPagina);
   }
 
 
