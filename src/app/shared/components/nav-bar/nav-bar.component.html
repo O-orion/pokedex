@@ -3,6 +3,31 @@
 
     <div class="menu-opcoes">
       <p>Olá, Lucas</p>
-      <p-dropdown class="menu-drop" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+      <span class="material-symbols-outlined menu-icone " (click)="toggleMenu($event)" >
+        arrow_drop_down
+        </span>
+    </div>
+
+    <div class="menu-dropdown" *ngIf="menuAberto">
+      <ul class="dropdown-lista">
+        <li>
+          <span class="material-symbols-outlined">
+            person
+            </span>
+            Meu Perfil
+        </li>
+        <li>
+          <span class="material-symbols-outlined">
+            dark_mode
+            </span>
+            Modo Escuro
+        </li>
+        <li>
+          <span class="material-symbols-outlined">
+            settings
+            </span>
+            Configurações
+        </li>
+      </ul>
     </div>
 </nav>

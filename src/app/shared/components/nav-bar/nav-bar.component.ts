@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,6 +9,7 @@ export class NavBarComponent  implements OnInit{
   cities: any[] = [];
 
   selectedCity: any;
+  menuAberto: boolean = false;
 
   ngOnInit() {
     this.cities = [
@@ -20,4 +21,13 @@ export class NavBarComponent  implements OnInit{
   ];
   }
 
+  toggleMenu(event: Event) {
+    event.stopPropagation();
+    this.menuAberto = !this.menuAberto;
+  }
+
+  @HostListener('document:click')
+  fecharMenu() {
+    this.menuAberto = false;
+  }
 }
