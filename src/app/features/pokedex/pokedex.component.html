@@ -5,7 +5,7 @@
   <section class="container-pokedex">
 
     <section class="header-pokedex">
-      
+
       <div class="infos-pokedex">
         <h1 class="titulo-pokedex">Fase teste prático Front_end</h1>
         <h2 class="subTitulo-pokedex">Subtitulo da descrição</h2>
@@ -13,7 +13,7 @@
 
       <div class="pesquisar-pokedex">
           <span class=" campo-pesquisa">
-            <input type="text" placeholder="Buscar" class="input-pesquisa">
+            <input [(ngModel)]="termoPesquisa"  (input)="filtrarItens()" type="text" placeholder="Buscar" class="input-pesquisa">
             <i  class="pi pi-search icone-pesquisa"></i>
         </span>
       </div>

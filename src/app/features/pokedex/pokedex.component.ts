@@ -9,7 +9,9 @@ import { PokemonsService } from 'src/app/shared/services/pokemons.service';
 })
 export class PokedexComponent implements OnInit, AfterViewInit {
 
+  termoPesquisa: string = '';
   pokemons: Pokemon[] = [];
+  pokemonsPesquisa: Pokemon[] = []
   countPokemons: number = 0
   paginaAtual: number = 0; // Página atual
   itensPorPagina: number = 20; // Quantidade de Pokémons por página
@@ -20,15 +22,7 @@ export class PokedexComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.servicePokemon.carregarListaPokemons().subscribe({
-      next: (listaPokemon) => {
-        this.nextPageUrl = listaPokemon.next
-        this.pokemons = listaPokemon.results;
-        this.countPokemons = listaPokemon.count
-
-      }
-    })
-
+    this.carregarPokemons();
   }
 
   ngAfterViewInit(): void {
@@ -39,6 +33,25 @@ export class PokedexComponent implements OnInit, AfterViewInit {
 
     }
 
+  }
+
+  carregarPokemons(): void {
+    this.servicePokemon.carregarListaPokemons().subscribe({
+      next: (listaPokemon) => {
+        this.nextPageUrl = listaPokemon.next
+        this.pokemons = listaPokemon.results;
+        this.countPokemons = listaPokemon.count
+
+      }
+    })
+  }
+
+  filtrarItens() {
+    if (this.termoPesquisa.trim() === '') {
+      this.carregarPokemons();
+    } else {
+      this.pokemons  = this.pokemons.filter(pokemon => pokemon.name.toLowerCase().startsWith(this.termoPesquisa.toLowerCase()))
+    }
   }
 
     // Método para avançar para a próxima página
