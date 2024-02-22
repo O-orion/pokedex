@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, NgZone, OnInit, Renderer2 } from '@angular/core';
 import { Pokemon } from 'src/app/core/models/pokemon';
 import { PokemonsService } from 'src/app/shared/services/pokemons.service';
 
@@ -7,7 +7,7 @@ import { PokemonsService } from 'src/app/shared/services/pokemons.service';
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.scss']
 })
-export class PokedexComponent implements OnInit {
+export class PokedexComponent implements OnInit, AfterViewInit {
 
   pokemons: Pokemon[] = [];
   countPokemons: number = 0
@@ -15,20 +15,30 @@ export class PokedexComponent implements OnInit {
   itensPorPagina: number = 20; // Quantidade de Pokémons por página
   nextPageUrl: string = ''
 
-  constructor(private servicePokemon: PokemonsService) {
+  constructor(private servicePokemon: PokemonsService, private elementRef: ElementRef, private renderer: Renderer2, private zone: NgZone) {
 
   }
 
   ngOnInit(): void {
     this.servicePokemon.carregarListaPokemons().subscribe({
       next: (listaPokemon) => {
-        console.log(listaPokemon)
         this.nextPageUrl = listaPokemon.next
         this.pokemons = listaPokemon.results;
         this.countPokemons = listaPokemon.count
 
       }
     })
+
+  }
+
+  ngAfterViewInit(): void {
+
+
+    window.onload = () => {
+      this.ajustarAlturaBarraLateral()
+
+    }
+
   }
 
     // Método para avançar para a próxima página
@@ -61,5 +71,21 @@ export class PokedexComponent implements OnInit {
     return Math.ceil(this.countPokemons / this.itensPorPagina);
   }
 
+  // Ajustando tamanho da barra lateral
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.ajustarAlturaBarraLateral();
+  }
+
+  private ajustarAlturaBarraLateral() {
+    const barraLateral = this.elementRef.nativeElement.querySelector('.barra-lateral');
+    const alturaPagina = Math.max(document.body.scrollHeight, document.body.offsetHeight,
+      document.documentElement.clientHeight, document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight);
+
+    if (barraLateral) {
+      this.renderer.setStyle(barraLateral, 'height', `${alturaPagina}px`);
+    }
+  }
 
 }
