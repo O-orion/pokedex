@@ -10,8 +10,10 @@ import { PokemonsService } from 'src/app/shared/services/pokemons.service';
 export class PokedexComponent implements OnInit, AfterViewInit {
 
   termoPesquisa: string = '';
+
   pokemons: Pokemon[] = [];
   pokemonsPesquisa: Pokemon[] = []
+
   countPokemons: number = 0
   paginaAtual: number = 0; // Página atual
   itensPorPagina: number = 20; // Quantidade de Pokémons por página
@@ -100,5 +102,6 @@ export class PokedexComponent implements OnInit, AfterViewInit {
       this.renderer.setStyle(barraLateral, 'height', `${alturaPagina}px`);
     }
   }
+
 
 }
