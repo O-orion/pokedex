@@ -66,11 +66,15 @@
 
         }
 
+        .input-pesquisa:focus {
+          outline: none;
+        }
+
         .icone-pesquisa {
           position: absolute;
           width: 24px;
           height: 24px;
-          top: 32%;
+          top: 25%;
 
           right: 1%;
           color: #565656;

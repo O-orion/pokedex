@@ -15,8 +15,8 @@ export class PokedexComponent implements OnInit, AfterViewInit {
   pokemonsPesquisa: Pokemon[] = []
 
   countPokemons: number = 0
-  paginaAtual: number = 0; // Página atual
-  itensPorPagina: number = 20; // Quantidade de Pokémons por página
+  paginaAtual: number = 0; 
+  itensPorPagina: number = 20;
   nextPageUrl: string = ''
 
   constructor(private servicePokemon: PokemonsService, private elementRef: ElementRef, private renderer: Renderer2, private zone: NgZone) {
