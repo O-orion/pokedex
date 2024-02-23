@@ -180,75 +180,92 @@
 }
 
 @media (max-width: 800px) {
+
+  .barra-lateral {
+    display: none;
+  }
+
   .container-pokedex {
     padding-top: 1rem;
 
-    .titulo-pokedex {
-      color: #000000DE;
+    .header-pokedex {
+      display: block;
 
-      font-weight: 700;
-      font-size: 28px;
-      line-height: 44px;
-      text-align: center;
+      .infos-pokedex {
+        width: 100%;
+        flex-direction: column;
+        display: flex;
 
-    }
+        .titulo-pokedex {
+          color: #000000DE;
 
-    .subTitulo-pokedex {
-      color: #000000DE;
-      height: 24px;
+          font-weight: 700;
+          font-size: 28px;
+          line-height: 44px;
+          text-align: center;
 
-      font-weight: 400;
-      line-height: 24px;
+        }
 
-      text-align: center;
-      font-size: 22px;
-    }
+        .subTitulo-pokedex {
+          color: #000000DE;
+          height: 24px;
 
-    .pesquisar-pokedex {
-      padding-top: 1rem;
+          font-weight: 400;
+          line-height: 24px;
 
-      width: 100%;
+          text-align: center;
+          font-size: 22px;
+        }
+      }
 
-      display: flex;
-      justify-content: center;
+      .pesquisar-pokedex {
+        padding-top: 1rem;
 
-      .campo-pesquisa {
-        overflow: hidden;
-        position: relative;
+        width: 100%;
 
         display: flex;
         justify-content: center;
 
-        .input-pesquisa {
-          width: 257px;
-          height: 40px;
-          border: 1px solid #BDBDBD;
-          border-radius: 5px;
-          padding: 5px;
-          padding-right:30px ;
-        }
+        .campo-pesquisa {
+          overflow: hidden;
+          position: relative;
 
-        .input-pesquisa::placeholder {
-          font-family: "Nunito", sans-serif;
-          font-weight: 500;
-          font-size: 14px;
-          line-height: 24px;
-          color: #00000099;
+          display: flex;
+          justify-content: center;
 
-        }
+          .input-pesquisa {
+            width: 257px;
+            height: 40px;
+            border: 1px solid #BDBDBD;
+            border-radius: 5px;
+            padding: 5px;
+            padding-right:30px ;
+          }
 
-        .icone-pesquisa {
-          position: absolute;
-          width: 24px;
-          height: 24px;
-          top: 32%;
+          .input-pesquisa::placeholder {
+            font-family: "Nunito", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            color: #00000099;
 
-          right: 1%;
-          color: #565656;
+          }
 
+          .icone-pesquisa {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            top: 32%;
+
+            right: 1%;
+            color: #565656;
+
+          }
         }
       }
     }
+
+
 
     .lista-pokemon {
       width: 100%;
