@@ -8,7 +8,7 @@
 
       <div class="infos-pokedex">
         <h1 class="titulo-pokedex">Fase teste prático Front_end</h1>
-        <h2 class="subTitulo-pokedex">Subtitulo da descrição</h2>
+        <h2 class="subTitulo-pokedex">Pokedex</h2>
       </div>
 
       <div class="pesquisar-pokedex">
@@ -27,11 +27,14 @@
         <div class="linha"></div>
       </div>
 
-      <div class="body-lista-pokemons">
-        <div class="item-lista-pokemon" *ngFor="let pokemon of pokemons | slice: paginaAtual * itensPorPagina : (paginaAtual * itensPorPagina) + itensPorPagina">
-          <img class="pokemon-imagem" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.url.split('/')[6]}}.png" alt="">
+      <div class="body-lista-pokemons" >
+        <div title="clique para saber mais" class="item-lista-pokemon" *ngFor="let pokemon of pokemons | slice: paginaAtual * itensPorPagina : (paginaAtual * itensPorPagina) + itensPorPagina">
+          <div class="pokemons-images">
+            <img class="pokemon-imagem" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.url.split('/')[6]}}.png" alt="">
+            <img class="pokemon-shiny " src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/{{pokemon.url.split('/')[6]}}.png " alt="">
+          </div>
           <div class="pokemon-infos">
-            <p class="pokemon-nome">{{ pokemon.name }}</p>
+            <p class="pokemon-nome">{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }}</p>
             <p class="pokemon-descricao">Características do pokemon dolor sit amet, consectetur adipiscing elit. In ultricies nunc at odio tempor tincidunt. Sed sit amet dolor velit. Donec convallis tellus ut porta molestie. Suspendisse condimentum et dui in aliquam.</p>
           </div>
 
